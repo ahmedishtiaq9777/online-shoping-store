@@ -1,0 +1,44 @@
+﻿<div style="margin:5px;">
+    <br />
+    <h3>@TempData["procode"]</h3>
+    <span>square of number</span>
+    <br />
+    <br />
+    <input type="text" value="ahmed" hidden/>
+    <input type="number" id="sup"/>
+    <br />
+    <input type="button" value="show" id="button"/>
+    <div id="update">Result</div>
+    <br />
+    @*@for(int i=1;i<3;i++)
+    {
+        <input type="text" />
+
+    }*@
+
+
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#button").click(function () {
+                var n={val:$("#sup").val()}
+              //var num = $("#sup").val();
+                $.ajax({
+                    type:"post",
+                    url: "/Home/about/",
+                    data: { v: n },
+                    success: function (data) {
+                        $("#update").html("Result: " + data.result);
+
+                    }
+
+                });
+
+            });
+
+        });
+
+
+    </script>
+}
